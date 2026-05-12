@@ -8,13 +8,14 @@
 
 ### **Scenario and Objective:**
 
-Superduper Insurance (not a real company) is an insurance company specializing in Medicare Supplements. However, they have recently expanded and are planning to roll out new Medicare Advantage Policies. The initial rollout will take place in the Midwest region of the US, containing the following states:
+Superduper Insurance (not a real company) is an insurance company specializing in Medicare Supplements. They have recently expanded and are planning to roll out new Medicare Advantage policies. The initial rollout will take place in the Midwest region of the US, containing the following states:
 
-North Dakota South Dakota Minnesota, Wisconsin, Michigan, Iowa, Illinois, Indiana, Ohio, Nebraska, Missouri and Kansas
+North Dakota, South Dakota, Minnesota, Wisconsin, Michigan, Iowa, Illinois, Indiana, Ohio, Nebraska, Missouri and Kansas
 
 Traditionally, Medicare Advantage policy accessibility is based on location, so it's important to understand beneficiary distributions to decide which policies should go to which states. Furthermore, the marketing team needs a solid grasp of demographic distributions in order to conduct a successful ad campaign for the new MA program. I have been tasked to conduct an analysis on CMS Medicare Beneficiary data in order to answer the following questions:
 
 - Which states and counties have the highest demand for Medicare Advantage policies.
+- What are the demographic distributions of each state?
 
 ### **Data Report:**
 
@@ -92,11 +93,23 @@ At it's core, this project can be boiled down to 2 simple questions:
 - What is the demand for Medicare advantage?
 - What kinds of people are in each state?
 
-The first question is the most challenging of the two, but the data does provide a solid answer. There are many, many, MANY different types of beneficiaries in the dataset, and each kind of beneficiary has a certain level of demand for Medicare Advantage. For example, someone in the __________ column might have less demand, because as the column name implies, they already have Part C or other additional coverage. However, people in the _________ column might have more, since they only have Medicare Part A and B. The data clearly shows that people with Part A and Part B with no additional coverage are on the decline, while people with both kinda of coverage are on the rise as shown here:
+The first question is the more challenging of the two, but the data does provide a solid answer. There are many, many, MANY different types of beneficiaries in the dataset, and each kind of beneficiary has a certain level of implied demand for Medicare Advantage. For example, someone in the __________ column might have lower demand, because as the column name implies, they already have Part C or other additional coverage. However, people in the _________ column might have higher demand, since they only have Medicare Part A and B. The data clearly shows that people with Part A and Part B with no additional coverage are on the decline, while people with both kinds of coverage are on the rise as shown here:
 
-This chart shows data for the entire midwest region, but I found that every single state has some variation of this pattern. This means that people without extra coverage have implied demand.
+This chart shows data for the entire midwest region, but I found that every single state has some variation of this pattern. This means that **people without extra coverage have implied demand.**
 
-That would make for an easy ratio, but there's just one other problem: Population. A ratio that only contains the number of people 
+That would make for an easy ratio, but there's just one other problem: Population. Even if a location has high demand, focusing the campaign on low-population areas could result in less return overall. In order to properly gauge Opportunity, we must take into account the following:
+
+- Areas with a high population of beneficiaries with BOTH A and B.
+- Areas with a high population of beneficiaries without Part C or other additional coverage.
+- Areas with a high Medicare beneficiary population overall.
+
+This is the sweet spot, and after untangling the CMS data, I will use the following ratio:
+
+DAX:
+
+SQL:
+
+The second question regarding demographics is much simpler. The data has the sex, ethnicty and medicaid status of Medicare beneficiaries in one neat column. Since the columns contain the total number of beneficiaries per demographic, I can't calculate an implied demand, but I can find a distribution, which should be enough until additional data is acquired during the rollout.
 
 ### **Results and Observations:**
 
