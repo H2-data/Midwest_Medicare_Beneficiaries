@@ -1,4 +1,4 @@
-<div align="center">
+<img width="470" height="367" alt="image" src="https://github.com/user-attachments/assets/507a4ab0-9d59-4571-93e3-14d1e9f5750e" /><div align="center">
 
 # Medicare Beneficiaries in the Midwest
 
@@ -93,7 +93,12 @@ At it's core, this project can be boiled down to 2 simple questions:
 - What is the demand for Medicare advantage?
 - What kinds of people are in each state?
 
-The first question is the more challenging of the two, but the data does provide a solid answer. There are many, many, MANY different types of beneficiaries in the dataset, and each kind of beneficiary has a certain level of implied demand for Medicare Advantage. For example, someone in the __________ column might have lower demand, because as the column name implies, they already have Part C or other additional coverage. However, people in the _________ column might have higher demand, since they only have Medicare Part A and B. The data clearly shows that people with Part A and Part B with no additional coverage are on the decline, while people with both kinds of coverage are on the rise as shown here:
+The first question is the more challenging of the two, but the data does provide a solid answer. There are many different types of beneficiaries in the dataset, and each kind of beneficiary has a certain level of implied demand for Medicare Advantage. For example, someone in the MA_AND_OTH_BENES column might have lower demand, because as the column name implies, they already have Part C or other additional coverage. However, people in the A_B_ORGNL_MDCR_BENES column might have higher demand, since they only have Medicare Part A and B. The data clearly shows that people with Part A and Part B with no additional coverage are on the decline, while people with both kinds of coverage are on the rise as shown here:
+
+<div align="center">
+    <img width="425" height="373" alt="image" src="https://github.com/user-attachments/assets/6688431b-20f9-487a-9c5a-b81c2c0621d4" />
+</div> 
+<br>
 
 This chart shows data for the entire midwest region, but I found that every single state has some variation of this pattern. This means that **people without extra coverage have implied demand.**
 
@@ -105,24 +110,36 @@ That would make for an easy ratio, but there's just one other problem: Populatio
 
 This is the sweet spot, and after untangling the CMS data, I will use the following ratio:
 
-DAX:
-
+```SQL
+(A_B_TOT_BENES) * (1 - SUM(A_B_MA_AND_OTH_BENES) / TOT_BENES)
 ```
 
-SQL:
-
-The second question regarding demographics is much simpler. The data has the sex, ethnicty and medicaid status of Medicare beneficiaries in one neat column. Since the columns contain the total number of beneficiaries per demographic, I can't calculate an implied demand, but I can find a distribution, which should be enough until additional data is acquired during the rollout.
+The second question regarding demographics is much simpler. The data has the sex, ethnicty and medicaid status of Medicare beneficiaries in respective neat columns. Since the columns contain the total number of beneficiaries per demographic, I can't calculate an implied demand, but I can find a distribution, which should be enough until additional data is acquired during the rollout.
 
 ### **Results and Observations:**
 
 Important Notes:
 
-- 'White' is the dominant demographic acrss every single state by a country mile, it's about 70% of the population. I want to get a better idea of secondary demographics, so I have removed it from the ethnicity visuals, but it is always the main demographic.
+- 'White' is the dominant demographic across every single state by several magnitudes, it's about 85% of the midwest population. I want to get a better idea of secondary demographics, so I have removed it from the ethnicity visuals, but it is always the main demographic.
 
-- Cook County is the most populous county in the midwest region, it's a massive outlier that distorts everything around it. It will be acknowledged and removed from the analysis, but it should be considered a top priority.
+<img width="471" height="365" alt="image" src="https://github.com/user-attachments/assets/850de00f-71a6-4ccd-a2a4-8a3fbb775d3c" />
+
+- Cook County is the most populous county in the midwest region due to Chicago being there, it's a massive outlier that distorts everything around it. It will be acknowledged and removed from the analysis to keep visuals clear, but it should be considered a top priority.
+
+<img width="470" height="367" alt="image" src="https://github.com/user-attachments/assets/c37b0030-af95-486e-9764-24d7287e3380" />
 
 Let's go through and answer each data question using visuals and tables from the report.
 
-- 
+- Which States have the highest demand for Medicare Advantage?
+
+<img width="1096" height="341" alt="image" src="https://github.com/user-attachments/assets/48018698-f1f1-4020-96e0-acacc17bf933" />
+
+- **What are the demographic distributions of the midwest and each state?**
+
+<img width="1182" height="310" alt="image" src="https://github.com/user-attachments/assets/0662e1db-4a31-4c54-8f3c-03854f7b9827" />
 
 ### **Analyst Recommendations and Comments:**
+
+This README is designed to be summative. To see the results for state spcific demographic distributions and the top 10 counties per state, you can refer to the dashboard section or SQL section of the project, linked below:
+
+daaaaaash
