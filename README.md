@@ -1,4 +1,4 @@
-<img width="470" height="367" alt="image" src="https://github.com/user-attachments/assets/507a4ab0-9d59-4571-93e3-14d1e9f5750e" /><div align="center">
+<div align="center">
 
 # Medicare Beneficiaries in the Midwest
 
@@ -41,7 +41,7 @@ test = df3[
     (df3['BENE_STATE_DESC'] == 'Ohio')
     ]
 
-test[['YEAR', 'MONTH','BENE_STATE_ABRVTN', 'BENE_COUNTY_DESC', 'TOT_BENES']].set_index('YEAR')```
+test[['YEAR', 'MONTH','BENE_STATE_ABRVTN', 'BENE_COUNTY_DESC', 'TOT_BENES']].set_index('YEAR')
 ```
 
 |YEAR|MONTH|BENE\_STATE\_ABRVTN|BENE\_COUNTY\_DESC|TOT\_BENES|
@@ -108,13 +108,13 @@ That would make for an easy ratio, but there's just one other problem: Populatio
 - Areas with a high population of beneficiaries without Part C or other additional coverage.
 - Areas with a high Medicare beneficiary population overall.
 
-This is the sweet spot, and after untangling the CMS data, I will use the following ratio:
+This is the sweet spot, and after untangling the CMS data, I found the correct pieces to make the following ratio:
 
 ```SQL
 (A_B_TOT_BENES) * (1 - SUM(A_B_MA_AND_OTH_BENES) / TOT_BENES)
 ```
 
-The second question regarding demographics is much simpler. The data has the sex, ethnicty and medicaid status of Medicare beneficiaries in respective neat columns. Since the columns contain the total number of beneficiaries per demographic, I can't calculate an implied demand, but I can find a distribution, which should be enough until additional data is acquired during the rollout.
+The second question regarding demographics is much simpler. The data has the age sex, ethnicty and medicaid status of Medicare beneficiaries in respective neat columns. Since the columns contain the total number of beneficiaries per demographic, I can't calculate an implied demand, but I can find a distribution, which should be enough until additional data is acquired during the rollout.
 
 ### **Results and Observations:**
 
@@ -122,11 +122,9 @@ Important Notes:
 
 - 'White' is the dominant demographic across every single state by several magnitudes, it's about 85% of the midwest population. I want to get a better idea of secondary demographics, so I have removed it from the ethnicity visuals, but it is always the main demographic.
 
-<img width="471" height="365" alt="image" src="https://github.com/user-attachments/assets/850de00f-71a6-4ccd-a2a4-8a3fbb775d3c" />
-
 - Cook County is the most populous county in the midwest region due to Chicago being there, it's a massive outlier that distorts everything around it. It will be acknowledged and removed from the analysis to keep visuals clear, but it should be considered a top priority.
 
-<img width="470" height="367" alt="image" src="https://github.com/user-attachments/assets/c37b0030-af95-486e-9764-24d7287e3380" />
+<img width="832" height="190" alt="image" src="https://github.com/user-attachments/assets/be20411f-4f6b-4f65-aa54-bc9b0006729b" />
 
 Let's go through and answer each data question using visuals and tables from the report.
 
@@ -134,12 +132,16 @@ Let's go through and answer each data question using visuals and tables from the
 
 <img width="1096" height="341" alt="image" src="https://github.com/user-attachments/assets/48018698-f1f1-4020-96e0-acacc17bf933" />
 
+Based on the dashboard XYZ have the highes demand. But we can take this question a step further:
+
+- Which counties have the highest demand for Medicare Advantage? This README is designed to be summative, so I will provide the top 5 counties for the top 5 states:
+
+
+
 - **What are the demographic distributions of the midwest and each state?**
 
 <img width="1182" height="310" alt="image" src="https://github.com/user-attachments/assets/0662e1db-4a31-4c54-8f3c-03854f7b9827" />
 
 ### **Analyst Recommendations and Comments:**
 
-This README is designed to be summative. To see the results for state spcific demographic distributions and the top 10 counties per state, you can refer to the dashboard section or SQL section of the project, linked below:
 
-daaaaaash
