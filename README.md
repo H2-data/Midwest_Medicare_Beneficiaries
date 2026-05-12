@@ -107,6 +107,8 @@ This is the sweet spot, and after untangling the CMS data, I will use the follow
 
 DAX:
 
+```
+
 SQL:
 
 The second question regarding demographics is much simpler. The data has the sex, ethnicty and medicaid status of Medicare beneficiaries in one neat column. Since the columns contain the total number of beneficiaries per demographic, I can't calculate an implied demand, but I can find a distribution, which should be enough until additional data is acquired during the rollout.
