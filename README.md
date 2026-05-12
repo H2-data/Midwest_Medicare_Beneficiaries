@@ -10,12 +10,12 @@
 
 Superduper Insurance (not a real company) is an insurance company specializing in Medicare Supplements. They have recently expanded and are planning to roll out new Medicare Advantage policies. The initial rollout will take place in the Midwest region of the US, containing the following states:
 
-North Dakota, South Dakota, Minnesota, Wisconsin, Michigan, Iowa, Illinois, Indiana, Ohio, Nebraska, Missouri and Kansas
+**North Dakota, South Dakota, Minnesota, Wisconsin, Michigan, Iowa, Illinois, Indiana, Ohio, Nebraska, Missouri and Kansas**
 
 Traditionally, Medicare Advantage policy accessibility is based on location, so it's important to understand beneficiary distributions to decide which policies should go to which states. Furthermore, the marketing team needs a solid grasp of demographic distributions in order to conduct a successful ad campaign for the new MA program. I have been tasked to conduct an analysis on CMS Medicare Beneficiary data in order to answer the following questions:
 
-- Which states and counties have the highest demand for Medicare Advantage policies.
-- What are the demographic distributions of each state?
+- **Which states and counties have the highest demand for Medicare Advantage policies?**
+- **What are the demographic distributions of each state?**
 
 ### **Data Report:**
 
@@ -113,8 +113,14 @@ The second question regarding demographics is much simpler. The data has the sex
 
 ### **Results and Observations:**
 
+Important Notes:
+
+- 'White' is the dominant demographic acrss every single state by a country mile, it's about 70% of the population. I want to get a better idea of secondary demographics, so I have removed it from the ethnicity visuals, but it is always the main demographic.
+
+- Cook County is the most populous county in the midwest region, it's a massive outlier that distorts everything around it. It will be acknowledged and removed from the analysis, but it should be considered a top priority.
+
 Let's go through and answer each data question using visuals and tables from the report.
 
 - 
 
-### **Analyst Recommendations:**
+### **Analyst Recommendations and Comments:**
