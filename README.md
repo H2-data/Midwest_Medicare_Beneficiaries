@@ -8,6 +8,14 @@
 
 ### **Scenario and Objective:**
 
+Superduper Insurance (not a real company) is an insurance company specializing in Medicare Supplements. However, they have recently expanded and are planning to roll out new Medicare Advantage Policies. The initial rollout will take place in the Midwest region of the US, containing the following states:
+
+North Dakota South Dakota Minnesota, Wisconsin, Michigan, Iowa, Illinois, Indiana, Ohio, Nebraska, Missouri and Kansas
+
+Traditionally, Medicare Advantage policy accessibility is based on location, so it's important to understand beneficiary distributions to decide which policies should go to which states. Furthermore, the marketing team needs a solid grasp of demographic distributions in order to conduct a successful ad campaign for the new MA program. I have been tasked to conduct an analysis on CMS Medicare Beneficiary data in order to answer the following questions:
+
+- Which states and counties have the highest demand for Medicare Advantage policies.
+
 ### **Data Report:**
 
 <img width="1285" height="718" alt="image" src="https://github.com/user-attachments/assets/96df4494-8c0c-4f48-a350-4f733fc382b9" />
@@ -75,11 +83,25 @@ Just to be extra super sure, I used .describe for the column TOT_BENES using my 
 
 To see the other tests I ran as well as the rest of the preprocessing, please refer to the Python preprocessing portion of this project, linked here:
 
-[INSERT LINK HERE]\
+[INSERT LINK HERE]
 
 ### **How can I solve the problem?**
 
+At it's core, this project can be boiled down to 2 simple questions:
+
+- What is the demand for Medicare advantage?
+- What kinds of people are in each state?
+
+The first question is the most challenging of the two, but the data does provide a solid answer. There are many, many, MANY different types of beneficiaries in the dataset, and each kind of beneficiary has a certain level of demand for Medicare Advantage. For example, someone in the __________ column might have less demand, because as the column name implies, they already have Part C or other additional coverage. However, people in the _________ column might have more, since they only have Medicare Part A and B. The data clearly shows that people with Part A and Part B with no additional coverage are on the decline, while people with both kinda of coverage are on the rise as shown here:
+
+This chart shows data for the entire midwest region, but I found that every single state has some variation of this pattern. This means that people without extra coverage have implied demand.
+
+That would make for an easy ratio, but there's just one other problem: Population. A ratio that only contains the number of people 
 
 ### **Results and Observations:**
+
+Let's go through and answer each data question using visuals and tables from the report.
+
+- 
 
 ### **Analyst Recommendations:**
