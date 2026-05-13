@@ -132,7 +132,7 @@ Let's go through and answer each data question using visuals and tables from the
 
 <img width="1096" height="341" alt="image" src="https://github.com/user-attachments/assets/48018698-f1f1-4020-96e0-acacc17bf933" />
 
-- **Which counties have the highest demand for Medicare Advantage?** This README is designed to be summative, so I will provide the top 5 counties for the top 5 states, but all county rankings by stat can be found on the dashboard and in the SQL portion.
+- **Which counties have the highest demand for Medicare Advantage?** This README is designed to be summative, so I will provide the top 5 counties for the top 5 states, but all county rankings by state can be found on the interactive dashboard and in the SQL 'demographics' file, linked below.
 
 [INSERT IMAGE HERE]
 
