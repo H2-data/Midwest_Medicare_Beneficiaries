@@ -128,19 +128,21 @@ Important Notes:
 
 Let's go through and answer each data question using visuals and tables from the report.
 
-- Which States have the highest demand for Medicare Advantage?
+- **Which States have the highest demand for Medicare Advantage?**
 
 <img width="1096" height="341" alt="image" src="https://github.com/user-attachments/assets/48018698-f1f1-4020-96e0-acacc17bf933" />
 
-Based on the dashboard XYZ have the highes demand. But we can take this question a step further:
+- **Which counties have the highest demand for Medicare Advantage?** This README is designed to be summative, so I will provide the top 5 counties for the top 5 states, but all county rankings by stat can be found on the dashboard and in the SQL portion.
 
-- Which counties have the highest demand for Medicare Advantage? This README is designed to be summative, so I will provide the top 5 counties for the top 5 states:
+[INSERT IMAGE HERE]
 
-
-
-- **What are the demographic distributions of the midwest and each state?**
+- **What are the demographic distributions of the midwest?**
 
 <img width="1182" height="310" alt="image" src="https://github.com/user-attachments/assets/0662e1db-4a31-4c54-8f3c-03854f7b9827" />
+
+- **What are the demographic distributions for each state?** This README is designed to be summative, so I will provide the demographic info for the top 5 states, but all county demographics can be found on the interactive dashboard and in the SQL 'demographics' file, linked below.
+
+
 
 ### **Analyst Recommendations and Comments:**
 
