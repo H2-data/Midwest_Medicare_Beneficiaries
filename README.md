@@ -127,7 +127,6 @@ Important Notes:
 <img width="832" height="190" alt="image" src="https://github.com/user-attachments/assets/be20411f-4f6b-4f65-aa54-bc9b0006729b" />  
 </div>
 <br>
-<br>
   
 Let's go through and answer each data question using visuals and tables from the report.
 
