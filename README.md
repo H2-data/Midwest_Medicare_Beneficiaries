@@ -95,12 +95,9 @@ At it's core, this project can be boiled down to 2 simple questions:
 
 The first question is the more challenging of the two, but the data does provide a solid answer. There are many different types of beneficiaries in the dataset, and each kind of beneficiary has a certain level of implied demand for Medicare Advantage. For example, someone in the MA_AND_OTH_BENES column might have lower demand, because as the column name implies, they already have Part C or other additional coverage. However, people in the A_B_ORGNL_MDCR_BENES column might have higher demand, since they only have Medicare Part A and B. The data clearly shows that people with Part A and Part B with no additional coverage are on the decline, while people with both kinds of coverage are on the rise as shown here:
 
-<div align="center">
-    <img width="425" height="373" alt="image" src="https://github.com/user-attachments/assets/6688431b-20f9-487a-9c5a-b81c2c0621d4" />
-</div> 
-<br>
+<img width="1096" height="272" alt="image" src="https://github.com/user-attachments/assets/a6bbb156-ac63-4df4-a36f-ff1ea15636f3" />
 
-This chart shows data for the entire midwest region, but I found that every single state has some variation of this pattern. This means that **people without extra coverage have implied demand.**
+These visuals show that all Midwest States have some t
 
 That would make for an easy ratio, but there's just one other problem: Population. Even if a location has high demand, focusing the campaign on low-population areas could result in less return overall. In order to properly gauge Opportunity, we must take into account the following:
 
@@ -133,6 +130,8 @@ Let's go through and answer each data question using visuals and tables from the
 <img width="1096" height="341" alt="image" src="https://github.com/user-attachments/assets/48018698-f1f1-4020-96e0-acacc17bf933" />
 
 - **Which counties have the highest demand for Medicare Advantage?** This README is designed to be summative, so I will provide the top 5 counties for the top 5 states, but all county rankings by state can be found on the interactive dashboard and in the SQL 'demographics' file, linked below.
+
+
 
 [INSERT IMAGE HERE]
 
