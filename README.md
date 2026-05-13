@@ -63,7 +63,7 @@ test2 = df3[
 
 test2[['YEAR', 'MONTH','BENE_STATE_ABRVTN', 'BENE_COUNTY_DESC', 'TOT_BENES']].set_index('YEAR')
 ```
-
+    
 |YEAR|MONTH|BENE\_STATE\_ABRVTN|BENE\_COUNTY\_DESC|TOT\_BENES|
 |---|---|---|---|---|
 |2020|Year|OH|Adams County|6520\.0|
@@ -96,8 +96,9 @@ At it's core, this project can be boiled down to 2 simple questions:
 The first question is the more challenging of the two, but the data does provide a solid answer. There are many different types of beneficiaries in the dataset, and each kind of beneficiary has a certain level of implied demand for Medicare Advantage. For example, someone in the MA_AND_OTH_BENES column might have lower demand, because as the column name implies, they already have Part C or other additional coverage. However, people in the A_B_ORGNL_MDCR_BENES column might have higher demand, since they only have Medicare Part A and B. The data clearly shows that people with Part A and Part B with no additional coverage are on the decline, while people with both kinds of coverage are on the rise as shown here:
 
 <img width="1096" height="272" alt="image" src="https://github.com/user-attachments/assets/a6bbb156-ac63-4df4-a36f-ff1ea15636f3" />
+<br>
 
-These visuals show that all Midwest States have some t
+Every single Midwest state has this trend, the difference is when it started. In Wisconsin, Ohio, Michigan, Minnesota and Missouri (And the Dakotas, not depicted here) the trend began earlier, around 2020. In Illinois, Indiana, Iowa, Kansas and Nebraska, the trend began more recently. The more recent the trend, the greater the possible market gap. **The bottom 5 states here should be given special attention.**
 
 That would make for an easy ratio, but there's just one other problem: Population. Even if a location has high demand, focusing the campaign on low-population areas could result in less return overall. In order to properly gauge Opportunity, we must take into account the following:
 
@@ -121,28 +122,36 @@ Important Notes:
 
 - Cook County is the most populous county in the midwest region due to Chicago being there, it's a massive outlier that distorts everything around it. It will be acknowledged and removed from the analysis to keep visuals clear, but it should be considered a top priority.
 
-<img width="832" height="190" alt="image" src="https://github.com/user-attachments/assets/be20411f-4f6b-4f65-aa54-bc9b0006729b" />
-
+<div align="center">
+    
+<img width="832" height="190" alt="image" src="https://github.com/user-attachments/assets/be20411f-4f6b-4f65-aa54-bc9b0006729b" />  
+</div>
+<br>
+<br>
+  
 Let's go through and answer each data question using visuals and tables from the report.
 
 - **Which States have the highest demand for Medicare Advantage?**
 
-<img width="1096" height="341" alt="image" src="https://github.com/user-attachments/assets/48018698-f1f1-4020-96e0-acacc17bf933" />
+<img width="1096" height="341" alt="image" src="https://github.com/user-attachments/assets/48018698-f1f1-4020-96e0-acacc17bf933" />  
+<br>  
+<br>
+  
+- **Which counties have the highest demand for Medicare Advantage?** This README is designed to be summative, so I will provide the top 5 counties for the top 3 states, but all county rankings by state can be found on the interactive dashboard and in the SQL 'demographics' file, linked below.
 
-- **Which counties have the highest demand for Medicare Advantage?** This README is designed to be summative, so I will provide the top 5 counties for the top 5 states, but all county rankings by state can be found on the interactive dashboard and in the SQL 'demographics' file, linked below.
-
-
-
-[INSERT IMAGE HERE]
+<img width="1162" height="217" alt="image" src="https://github.com/user-attachments/assets/433c5e69-8a5c-4965-9410-9f523d32e524" />
+<img width="1162" height="216" alt="image" src="https://github.com/user-attachments/assets/433fde08-0773-4e20-84c1-61184e309d34" /> 
+<img width="1158" height="217" alt="image" src="https://github.com/user-attachments/assets/8c05ac8d-18a0-47cb-9e7a-82bf9334c6dc" />  
+<br>
+<br>
 
 - **What are the demographic distributions of the midwest?**
 
 <img width="1182" height="310" alt="image" src="https://github.com/user-attachments/assets/0662e1db-4a31-4c54-8f3c-03854f7b9827" />
+<br>
+<br>
 
-- **What are the demographic distributions for each state?** This README is designed to be summative, so I will provide the demographic info for the top 5 states, but all county demographics can be found on the interactive dashboard and in the SQL 'demographics' file, linked below.
+- **What are the demographic distributions for each state?** This README is designed to be summative, to see state by state demographic percentage data, see the SQL portion of the analysis, linked here:
 
-
-
-### **Analyst Recommendations and Comments:**
-
+[insert SQL link here]
 
