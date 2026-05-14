@@ -1,4 +1,4 @@
-Data Dictionary II: The CMS Mess
+# Data Dictionary II: The CMS Mess
 
 It's important to note that a lot of these columns are calculations of other columns. This can be frustrating, but after going through each subsection (Demographics, Medicare, Medicaid and Prescription Drug) I sorted out which columns were calculated within each other. From this, I chose the columns that would be most useful in answering the question: Which populations have a high number of people eligible for Medicare Advantage without having it? The Data Dictionary does not mention some of these column calculations, so I will list the important ones here. In this section, I will also talk about columns that seem to have redundant information.
 
