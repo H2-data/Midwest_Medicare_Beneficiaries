@@ -6,6 +6,8 @@
 
 ---
 
+Files are labelled from 01-06. They can be read in numeric order. The dashbord is screenshotted and linked below, and it is the last step in the process.
+
 ### **Scenario and Objective:**
 
 Superduper Insurance (not a real company) is an insurance company specializing in Medicare Supplements. They have recently expanded and are planning to roll out new Medicare Advantage policies. The initial rollout will take place in the Midwest region of the US, containing the following states:
