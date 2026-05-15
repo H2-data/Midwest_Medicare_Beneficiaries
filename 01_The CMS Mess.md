@@ -4,13 +4,19 @@ It's important to note that a lot of these columns are calculations of other col
 
 ___
 
+- TOT_BENES:
+
 TOT_BENES: It's also ORGNL_MDCR_BENES + MA_AND_OTH_BENES
 TOT_BENES: It's also all columns between AGE_LT_25_BENES to AGE_GT_94_BENES
 TOT_BENES: It's also MALE_TOT_BENES + FEMALE_TOT_BENES
 TOT_BENES: This is DUAL_TOT_BENES + NO_DUAL_TOT_BENES
 TOT_BENES: It's also AGED_ESRD_BENES + AGED_NO_ESRD_BENES + DSBLD_TOT_BENES
 
+- DSBLD_TOT_BENES:
+
 DSBLD_TOT_BENES: This is DSBLD_ESRD_AND_ESRD_ONLY_BENES + DSBLD_NO_ESRD_BENES. All the columns making up this value are individual demographics that can be added.
+
+- Medicare Coverage Levels:
 
 MA_AND_OTH_BENES: This column is actually repeated 4 times. The columns A_B_MA_AND_OTH_BENES, A_MA_AND_OTH_BENES and B_MA_AND_OTH_BENES have the same number as MA_AND_OTH_BENES. This is because if someone has MA, they specifically need Part A AND Part B. I will be dropping the A_B_MA, A_MA and B_MA columns because they serve no function.
 
@@ -25,6 +31,8 @@ A_ORGNL_MDCR_BENES: This includes people who have Part A and nothing else (No Pa
 A_TOT_BENES: This is A_ORGNL_MDCR_BENES + MA_AND_OTH_BENES. It's basically anyone who has either Part A, Part A + Part B or Part A + Part B + MA.
 
 You can apply the logic of A_ORGNL_MDCR_BENES TO B_ORGNL_MDCR_BENES and A_TOT_BENES to B_TOT_BENES.
+
+- Dual Coverage Levels:
 
 DUAL_TOT_BENES: This is QMB_PLUS_BENES + QMB_ONLY_BENES + SLMB_PLUS_BENES + SLMB_ONLY_BENES + QDWI_QI_BENES + OTHR_FULL_DUAL_MDCD_BENES. All the columns making up this number are individual demographics that can be added.
 
