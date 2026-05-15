@@ -30,7 +30,7 @@ To interact with the dashboard or see individual state and year distributions, s
 
 Aside from generic data preprocessing (outlier management, missing values and duplicates) there was a major challenge in preparing the data... The data itself. There are dozens of different types of Medicare beneficiaries, and because CMS likes to be thorough, some columns are calculations of other columns, which can greatly damage the intergity of the analysis. This problem was so prevalant, I created an entire seperate section dedicated to untangling the mess, linked below:
 
-[INSERT NIGHTMARE LINK FROM HELL HERE]
+[The_CMS_Mess](01_The%20CMS%20Mess.md)
 
 For this summative README, I will provide one example. When I went through some of the lookup columns to find possible calculated columns, I stumbled across a data entry labled 'Year' in the 'Month' column. I suspected it might be a yearly calculation of the number of Medicare beneficiaries per a geographic level, so I tested it by filtering the data into state and then county. The county filtration provided my answer:
 
@@ -84,7 +84,7 @@ Just to be extra super sure, I used .describe for the column TOT_BENES using my 
 
 To see the other tests I ran as well as the rest of the preprocessing, please refer to the Python preprocessing portion of this project, linked here:
 
-[INSERT LINK HERE]
+[Preprocessing](02_midwest_benes_cleaning.ipynb)
 
 ### **How can I solve the problem?**
 
@@ -156,5 +156,9 @@ This README is designed to be summative, so I will provide the top 5 counties fo
 
 This README is designed to be summative, to see state by state demographic percentage data, see the SQL portion of the analysis, linked here:
 
-[insert SQL link here]
+[Imports](03_Imports.sql)  
+[MA_Demand](04_MA_Demand.sql)  
+[Demographics](05_Demographics.sql)  
+[Growth](06_Growth.sql)  
+
 
