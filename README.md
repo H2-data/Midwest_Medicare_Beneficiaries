@@ -26,7 +26,7 @@ Traditionally, Medicare Advantage policy accessibility is based on location, so 
 
 To interact with the dashboard or see individual state and year distributions, see the Power BI section of the project, linked here:
 
-[INSERT LINK HERE]
+[Dashboard](https://app.powerbi.com/view?r=eyJrIjoiY2Q5MDc4NTktODQ0YS00MWU2LTliMzAtNTBiMTA4M2NhMTdiIiwidCI6ImRmZWM4YzJjLThlNWUtNDI4Yy05MmE4LTkzOTI1ZjM3Y2JlYiJ9)
 
 ### **Data Preprocessing:**
 
