@@ -12,7 +12,7 @@
 
 The data for this project was obtained from the following sources:
 
-- A **publicly available** dataset containing Medicare Beneficiary enrollment information from _____ to _____. It was created by the Centers for Medicare and Medicaid Services (CMS).
+- A **publicly available** dataset containing Medicare Beneficiary enrollment information from 2013 to 2025. It was created by the Centers for Medicare and Medicaid Services (CMS).
 
 [Data Source](https://data.cms.gov/resources/medicare-monthly-enrollment-data-dictionary)
 
@@ -38,7 +38,7 @@ The data for this project was obtained from the following sources:
 
 **Who is the Project's Intended Recipient?:**
 
-- This project is meant to be recieved and read by 
+- This project is meant to be recieved and read by Superduper In
   	  
 ### **Scenario and Objective:**
 
