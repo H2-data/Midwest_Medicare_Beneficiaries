@@ -8,9 +8,38 @@
 
 ### **Important Notes:**
 
-- The data used in this project is a public dataset, it is not confidential data.
+**The Data:**
 
-- Files are labelled from 01-06. They can be read in numeric order. The dashboard is screenshotted and linked below, and it is the last step in the process.
+The data for this project was obtained from the following sources:
+
+- A **publicly available** dataset containing Medicare Beneficiary enrollment information from _____ to _____. It was created by the Centers for Medicare and Medicaid Services (CMS).
+
+[Data Source](https://data.cms.gov/resources/medicare-monthly-enrollment-data-dictionary)
+
+[Dataset]
+
+**How to Read and Run This Repository:**
+
+- Files are labelled from 01-06. They can be read in numeric order. This README file contains the important points of the analysis, and should be read first.
+
+- To test the code on this project, you will need access to the following resources:
+  
+  	- Visual Studio Code (Or any other all-nclusive coding environment.)
+  	- A MySQL environment extension
+  	- Power BI Desktop
+  	- An OBDC Connector
+  	- A Python environment extension with the following libraries installed:
+ 
+      - Pandas
+	  - Numpy
+	  - Matplotlib
+	  - Seaborn
+      - SQLalchemy
+
+**Who is the Project's Intended Recipient?:**
+
+- This project is meant to be recieved and read by 
+  	  
 ### **Scenario and Objective:**
 
 Superduper Insurance (not a real company) is an insurance company specializing in Medicare Supplements. They have recently expanded and are planning to roll out new Medicare Advantage policies. The initial rollout will take place in the Midwest region of the US, containing the following states:
