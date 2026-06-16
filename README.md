@@ -38,7 +38,11 @@ The data for this project was obtained from the following sources:
 
 **Who is the Project's Intended Recipient?:**
 
-- This project is meant to be recieved and read by Superduper In
+This project is meant to be recieved by the following parties:
+
+- **The Superduper Insurance marketing expansion team** in charge of selecting state-by-state policy distribution for the upcoming Medicare Advantage program rollout. In this report, they will be able to see the top states based on their demand for MA and overall beneficiary population, so it will be clear which areas to prioritize during the rollout.
+
+- The **project managers in charge of advertising** for the upcoming MA rollout. In this report, they will be able to see the demographic distributions of Medicare beneficiaries in the target states, so it will be clear who to advertise for in each area.
   	  
 ### **Scenario and Objective:**
 
