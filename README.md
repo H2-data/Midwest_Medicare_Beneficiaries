@@ -24,7 +24,7 @@ The data for this project was obtained from the following sources:
 
 - To test the code on this project, you will need access to the following resources:
   
-  	- Visual Studio Code (Or any other all-nclusive coding environment.)
+  	- Visual Studio Code (Or any other all-inclusive coding environment.)
   	- A MySQL environment extension
   	- Power BI Desktop
   	- An OBDC Connector
@@ -127,7 +127,7 @@ At it's core, this project can be boiled down to 2 simple questions:
 - What is the demand for Medicare advantage?
 - What kinds of people are in each state?
 
-The first question is the more challenging of the two, but the data does provide a solid answer. There are many different types of beneficiaries in the dataset, and each kind of beneficiary has a certain level of implied demand for Medicare Advantage. For example, someone in the MA_AND_OTH_BENES column might have lower demand, because as the column name implies, they already have Part C or other additional coverage. However, people in the A_B_ORGNL_MDCR_BENES column might have higher demand, since they only have Medicare Part A and B. The data clearly shows that people with Part A and Part B with no additional coverage are on the decline, while people with both kinds of coverage are on the rise as shown here:
+The first question is the more challenging of the two, but the data does provide a solid answer. There are many different types of beneficiaries in the dataset, and each kind of beneficiary has a certain level of implied demand for Medicare Advantage. For example, someone in the MA_AND_OTH_BENES column might have lower demand, because as the column name implies, they already have Part C or other additional coverage. However, people in the A_B_ORGNL_MDCR_BENES column might have higher demand, since they only have Medicare Part A and B. The data clearly shows that people with Part A and Part B with no additional coverage are on the decline, while people with A, B and additional coverage are on the rise as shown here:
 
 <img width="1096" height="272" alt="image" src="https://github.com/user-attachments/assets/a6bbb156-ac63-4df4-a36f-ff1ea15636f3" />
 <br>
@@ -150,11 +150,11 @@ The second question regarding demographics is much simpler. The data has the age
 
 ### **Results and Observations:**
 
-Important Notes:
+**Outliers:**
 
-- 'White' is the dominant demographic across every single state by several magnitudes, it's about 85% of the midwest population. I want to get a better idea of secondary demographics, so I have removed it from the ethnicity visuals, but it is always the main demographic.
+- **White** is the dominant demographic across every single state by several magnitudes, it's about 85% of the midwest population. I want to get a better idea of secondary demographics, so I have removed it from the ethnicity visuals, but it is always the main demographic.
 
-- Cook County is the most populous county in the midwest region due to Chicago being there, it's a massive outlier that distorts everything around it. It will be acknowledged and removed from the analysis to keep visuals clear, but it should be considered a top priority.
+- **Cook County** is the most populous county in the midwest region due to Chicago being there, it's a massive outlier that distorts everything around it. It will be acknowledged and removed from the analysis to keep visuals clear, but it should be considered a top priority.
 
 <div align="center">
     
