@@ -36,6 +36,16 @@ The data for this project was obtained from the following sources:
 	  - Seaborn
       - SQLalchemy
 
+**Step 1.** Plug the CSV file into the python script and run it until you reach the 'Database Creation' section. 
+
+**Step 2.** Once you get to the Database Creation section, you can put the username, password and database name into the SQL alchemy engine object. Then run the code. It should slice the cleaned data into tables and send them to the database.
+
+**Step 3.** Run the SQL code in your SQL environment. You must do this since the code will create VIEW objects necessary for the dashboard to work.
+
+**Step 4.** Open the Power BI pbix file.
+
+**Step 5.** You need to have an ODBC connector since the code is MySQL. Once you've created the connection object, you can connect the database to Power BI using the Power Query. This should activate the dashboard.
+
 **Who is the Project's Intended Recipient?:**
 
 This project is meant to be recieved by the following parties:
@@ -43,7 +53,8 @@ This project is meant to be recieved by the following parties:
 - **The Superduper Insurance marketing expansion team** in charge of selecting state-by-state policy distribution for the upcoming Medicare Advantage program rollout. In this report, they will be able to see the top states based on their demand for MA and overall beneficiary population, so it will be clear which areas to prioritize during the rollout.
 
 - The **project managers in charge of advertising** for the upcoming MA rollout. In this report, they will be able to see the demographic distributions of Medicare beneficiaries in the target states, so it will be clear who to advertise for in each area.
-  	  
+___
+
 ### **Scenario and Objective:**
 
 Superduper Insurance (not a real company) is an insurance company specializing in Medicare Supplements. They have recently expanded and are planning to roll out new Medicare Advantage policies. The initial rollout will take place in the Midwest region of the US, containing the following states:
@@ -60,15 +71,12 @@ Traditionally, Medicare Advantage policy accessibility is based on location, so 
 <img width="1285" height="718" alt="image" src="https://github.com/user-attachments/assets/96df4494-8c0c-4f48-a350-4f733fc382b9" />
 <br>
 
-To interact with the dashboard or see individual state and year distributions, see the Power BI section of the project, linked here:
-
-[Dashboard](https://app.powerbi.com/view?r=eyJrIjoiY2Q5MDc4NTktODQ0YS00MWU2LTliMzAtNTBiMTA4M2NhMTdiIiwidCI6ImRmZWM4YzJjLThlNWUtNDI4Yy05MmE4LTkzOTI1ZjM3Y2JlYiJ9)
+To interact with the dashboard or see individual state and year distributions, see the Power BI section of the project, linked HERE:
+___
 
 ### **Data Preprocessing:**
 
-Aside from generic data preprocessing (outlier management, missing values and duplicates) there was a major challenge in preparing the data... The data itself. There are dozens of different types of Medicare beneficiaries, and because CMS likes to be thorough, some columns are calculations of other columns, which can greatly damage the intergity of the analysis. This problem was so prevalant, I created an entire seperate section dedicated to untangling the mess, linked below:
-
-[The_CMS_Mess](01_The%20CMS%20Mess.md)
+Aside from generic data preprocessing (outlier management, missing values and duplicates) there was a major challenge in preparing the data... The data itself. There are dozens of different types of Medicare beneficiaries, and because CMS likes to be thorough, some columns are calculations of other columns, which can greatly damage the intergity of the analysis. This problem was so prevalant, I created an entire seperate section dedicated to untangling the mess, linked HERE:
 
 For this summative README, I will provide one example. When I went through some of the lookup columns to find possible calculated columns, I stumbled across a data entry labled 'Year' in the 'Month' column. I suspected it might be a yearly calculation of the number of Medicare beneficiaries per a geographic level, so I tested it by filtering the data into state and then county. The county filtration provided my answer:
 
@@ -120,9 +128,8 @@ test2[['YEAR', 'MONTH','BENE_STATE_ABRVTN', 'BENE_COUNTY_DESC', 'TOT_BENES']].se
 
 Just to be extra super sure, I used .describe for the column TOT_BENES using my filtration constraints, and it turns out it was a yearly MEAN calculation, not a full sum. Still, a calculation is a calculation, so I took it out to preserve the integrity of the analysis.
 
-To see the other tests I ran as well as the rest of the preprocessing, please refer to the Python preprocessing portion of this project, linked here:
-
-[Preprocessing](02_midwest_benes_cleaning.ipynb)
+To see the other tests I ran as well as the rest of the preprocessing, please refer to the Python preprocessing portion of this project, linked HERE:
+___
 
 ### **How can I solve the problem?**
 
@@ -138,7 +145,7 @@ The first question is the more challenging of the two, but the data does provide
 
 Every single Midwest state has this trend, the difference is when it started. In Wisconsin, Ohio, Michigan, Minnesota and Missouri (And the Dakotas, not depicted here) the trend began earlier, around 2020. In Illinois, Indiana, Iowa, Kansas and Nebraska, the trend began more recently. The more recent the trend, the greater the possible market gap. **The bottom 5 states here should be given special attention.**
 
-That would make for an easy ratio, but there's just one other problem: Population. Even if a location has high demand, focusing the campaign on low-population areas could result in less return overall. In order to properly gauge Opportunity, we must take into account the following:
+That would make for an easy ratio, but there's just one other problem: Population. Even if a location has high demand, focusing the campaign on low-population areas could result in less return overall. In order to properly gauge demand, we must take into account the following:
 
 - Areas with a high population of beneficiaries with BOTH A and B.
 - Areas with a high population of beneficiaries without Part C or other additional coverage.
@@ -150,11 +157,12 @@ This is the sweet spot, and after untangling the CMS data, I found the correct p
 (A_B_TOT_BENES) * (1 - SUM(A_B_MA_AND_OTH_BENES) / TOT_BENES)
 ```
 
-The second question regarding demographics is much simpler. The data has the age sex, ethnicty and medicaid status of Medicare beneficiaries in respective neat columns. Since the columns contain the total number of beneficiaries per demographic, I can't calculate an implied demand, but I can find a distribution, which should be enough until additional data is acquired during the rollout.
+The second question regarding demographics is much simpler. The data has the age sex, ethnicty and Medicaid status of Medicare beneficiaries in neat columns. Since the columns contain the total number of beneficiaries per demographic, I can't calculate an implied demand, but I can find a distribution, which should be enough until additional data is acquired during the rollout.
+___
 
 ### **Results and Observations:**
 
-**Outliers:**
+#### **Outliers:**
 
 - **White** is the dominant demographic across every single state by several magnitudes, it's about 85% of the midwest population. I want to get a better idea of secondary demographics, so I have removed it from the ethnicity visuals, but it is always the main demographic.
 
@@ -168,33 +176,43 @@ The second question regarding demographics is much simpler. The data has the age
   
 Let's go through and answer each data question using visuals and tables from the report.
 
-- **Which States have the highest demand for Medicare Advantage?**
+#### **Which States have the highest demand for Medicare Advantage?**
 
 <img width="1096" height="341" alt="image" src="https://github.com/user-attachments/assets/48018698-f1f1-4020-96e0-acacc17bf933" />  
 <br>  
-<br>
-  
-- **Which counties have the highest demand for Medicare Advantage?**
 
-This README is designed to be summative, so I will provide the top 5 counties for the top 3 states, but all county rankings by state can be found on the interactive dashboard and in the SQL 'demographics' file, linked below.
+#### **Which counties have the highest demand for Medicare Advantage?**
+
+This README is designed to be summative, so I will provide the top 5 counties for the top 3 states, but all county rankings by state can be found on the interactive dashboard and in the SQL 'demographics' file, linked HERE.
 
 <img width="1162" height="217" alt="image" src="https://github.com/user-attachments/assets/433c5e69-8a5c-4965-9410-9f523d32e524" />
 <img width="1162" height="216" alt="image" src="https://github.com/user-attachments/assets/433fde08-0773-4e20-84c1-61184e309d34" /> 
 <img width="1158" height="217" alt="image" src="https://github.com/user-attachments/assets/8c05ac8d-18a0-47cb-9e7a-82bf9334c6dc" />  
 <br>
-<br>
 
-- **What are the demographic distributions of the midwest?**
+- The states with the highest current demand for Medicare advantage according to my ratio are **Illinois, Ohio, Michigan, Indiana and Missouri**. Illinois has a high ranking whether or not Cook County is factored in.
+
+- The see the County MA Demand Ranking for all states, please refer to the SQL report linked HERE. I'd recommend prioritizing the following:
+
+	- The top 5 counties for the top 5 results. MAKE SURE TO INCLUDE COOK COUNTY FOR ILLINOIS, I have removed it from visuals to avoid visal skew but it's population alone makes it top priority.
+	- The top 5 counties for Kansas, Nebraska and Iowa on account of their market opening.
+	- The top 5 counties for _________________________ on account of their MA policy growth from 2020-2024.
+	- The TOP PRIORITY STATES are _____________ because they fall into all 3 of the previous categories.
+
+#### **What are the demographic distributions of the midwest?**
 
 <img width="1182" height="310" alt="image" src="https://github.com/user-attachments/assets/0662e1db-4a31-4c54-8f3c-03854f7b9827" />
 <br>
 <br>
 
-- **What are the demographic distributions for each state?**
+- The dominant demographic for the Midwest overall is **white women aged 65-75 with no dual coverage**. There have not been any major demographic shifts during this time period.
+- Females and Males are an almost perfect 55-45 split, so it shouldn't be weighed too heavily in marketing decisions.
+- The secondary ethnic demographics in regards to beneficiary distribution for the Midwest are black beneficiaries (secondary) and Hispanic beneficiaries (tertiary).
+- Beneficiaries under 64 do not make for an effective target demographic.
 
-This README is designed to be summative, to see state by state demographic percentage data, see the SQL portion of the analysis, linked here:
+#### **Specific State Details:**
 
-[Imports](03_Imports.sql)  
-[MA_Demand](04_MA_Demand.sql)  
-[Demographics](05_Demographics.sql)  
-[Growth](06_Growth.sql)  
+- North Dakota and South Dakota have a uniquely high population of Native American beneficiaries as their secondary demographic for marketing purposes.
+- Michigan, Ohio and Missouri have a uniquely high population of black beneficiaries as their secondary demographic for marketing purposes.
+- Most states have a majority of demand beneficiaries centralized in the top 3 counties.
+- For more state by state details regarding demographics, please refer to the dashboard linked HERE and the SQL report linked HERE.
