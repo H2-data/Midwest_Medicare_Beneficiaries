@@ -198,5 +198,3 @@ This README is designed to be summative, to see state by state demographic perce
 [MA_Demand](04_MA_Demand.sql)  
 [Demographics](05_Demographics.sql)  
 [Growth](06_Growth.sql)  
-
-
