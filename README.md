@@ -6,9 +6,9 @@
 
 ---
 
-### **Important Notes:**
+## **Important Notes:**
 
-**The Data:**
+### **The Data:**
 
 The data for this project was obtained from the following sources:
 
@@ -18,7 +18,7 @@ The data for this project was obtained from the following sources:
 
 [Dataset]
 
-**How to Read and Run This Repository:**
+### **How to Read and Run This Repository:**
 
 - Files are labelled from 01-06. They can be read in numeric order. This README file contains the important points of the analysis, and should be read first.
 
@@ -46,16 +46,14 @@ The data for this project was obtained from the following sources:
 
 **Step 5.** You need to have an ODBC connector since the code is MySQL. Once you've created the connection object, you can connect the database to Power BI using the Power Query. This should activate the dashboard.
 
-**Who is the Project's Intended Recipient?:**
-
-This project is meant to be recieved by the following parties:
+### **Who is the Project's Intended Recipient?:**
 
 - **The Superduper Insurance marketing expansion team** in charge of selecting state-by-state policy distribution for the upcoming Medicare Advantage program rollout. In this report, they will be able to see the top states based on their demand for MA and overall beneficiary population, so it will be clear which areas to prioritize during the rollout.
 
 - The **project managers in charge of advertising** for the upcoming MA rollout. In this report, they will be able to see the demographic distributions of Medicare beneficiaries in the target states, so it will be clear who to advertise for in each area.
 ___
 
-### **Scenario and Objective:**
+## **Scenario and Objective:**
 
 Superduper Insurance (not a real company) is an insurance company specializing in Medicare Supplements. They have recently expanded and are planning to roll out new Medicare Advantage policies. The initial rollout will take place in the Midwest region of the US, containing the following states:
 
@@ -74,7 +72,7 @@ Traditionally, Medicare Advantage policy accessibility is based on location, so 
 To interact with the dashboard or see individual state and year distributions, see the Power BI section of the project, linked HERE:
 ___
 
-### **Data Preprocessing:**
+## **Data Preprocessing:**
 
 Aside from generic data preprocessing (outlier management, missing values and duplicates) there was a major challenge in preparing the data... The data itself. There are dozens of different types of Medicare beneficiaries, and because CMS likes to be thorough, some columns are calculations of other columns, which can greatly damage the intergity of the analysis. This problem was so prevalant, I created an entire seperate section dedicated to untangling the mess, linked HERE:
 
@@ -131,7 +129,7 @@ Just to be extra super sure, I used .describe for the column TOT_BENES using my 
 To see the other tests I ran as well as the rest of the preprocessing, please refer to the Python preprocessing portion of this project, linked HERE:
 ___
 
-### **How can I solve the problem?**
+## **How can I solve the problem?**
 
 At it's core, this project can be boiled down to 2 simple questions:
 
@@ -160,9 +158,9 @@ This is the sweet spot, and after untangling the CMS data, I found the correct p
 The second question regarding demographics is much simpler. The data has the age sex, ethnicty and Medicaid status of Medicare beneficiaries in neat columns. Since the columns contain the total number of beneficiaries per demographic, I can't calculate an implied demand, but I can find a distribution, which should be enough until additional data is acquired during the rollout.
 ___
 
-### **Results and Observations:**
+## **Results and Observations:**
 
-#### **Outliers:**
+### **Outliers:**
 
 - **White** is the dominant demographic across every single state by several magnitudes, it's about 85% of the midwest population. I want to get a better idea of secondary demographics, so I have removed it from the ethnicity visuals, but it is always the main demographic.
 
@@ -176,12 +174,12 @@ ___
   
 Let's go through and answer each data question using visuals and tables from the report.
 
-#### **Which States have the highest demand for Medicare Advantage?**
+### **Which States have the highest demand for Medicare Advantage?**
 
 <img width="1096" height="341" alt="image" src="https://github.com/user-attachments/assets/48018698-f1f1-4020-96e0-acacc17bf933" />  
 <br>  
 
-#### **Which counties have the highest demand for Medicare Advantage?**
+### **Which counties have the highest demand for Medicare Advantage?**
 
 This README is designed to be summative, so I will provide the top 5 counties for the top 3 states, but all county rankings by state can be found on the interactive dashboard and in the SQL 'demographics' file, linked HERE.
 
@@ -199,7 +197,7 @@ This README is designed to be summative, so I will provide the top 5 counties fo
 	- The top 5 counties for _________________________ on account of their MA policy growth from 2020-2024.
 	- The TOP PRIORITY STATES are _____________ because they fall into all 3 of the previous categories.
 
-#### **What are the demographic distributions of the midwest?**
+### **What are the demographic distributions of the midwest?**
 
 <img width="1182" height="310" alt="image" src="https://github.com/user-attachments/assets/0662e1db-4a31-4c54-8f3c-03854f7b9827" />
 <br>
@@ -210,7 +208,7 @@ This README is designed to be summative, so I will provide the top 5 counties fo
 - The secondary ethnic demographics in regards to beneficiary distribution for the Midwest are black beneficiaries (secondary) and Hispanic beneficiaries (tertiary).
 - Beneficiaries under 64 do not make for an effective target demographic.
 
-#### **Specific State Details:**
+### **Specific State Details:**
 
 - North Dakota and South Dakota have a uniquely high population of Native American beneficiaries as their secondary demographic for marketing purposes.
 - Michigan, Ohio and Missouri have a uniquely high population of black beneficiaries as their secondary demographic for marketing purposes.
