@@ -168,16 +168,17 @@ Let's go through and answer each data question using visuals and tables from the
 
 ### **Which States have the highest demand for Medicare Advantage?**
 
-<img width="1096" height="341" alt="image" src="https://github.com/user-attachments/assets/48018698-f1f1-4020-96e0-acacc17bf933" />  
+<img width="1141" height="335" alt="image" src="https://github.com/user-attachments/assets/58780ea9-3c56-49fd-8d7e-5bd1e742fad7" />
+
 <br>  
 
 ### **Which counties have the highest demand for Medicare Advantage?**
 
 This README is designed to be summative, so I will provide the top 5 counties for the top 3 states, but all county rankings by state can be found on the interactive dashboard and in the SQL 'demographics' file, linked HERE.
 
-<img width="1162" height="217" alt="image" src="https://github.com/user-attachments/assets/433c5e69-8a5c-4965-9410-9f523d32e524" />
-<img width="1162" height="216" alt="image" src="https://github.com/user-attachments/assets/433fde08-0773-4e20-84c1-61184e309d34" /> 
-<img width="1158" height="217" alt="image" src="https://github.com/user-attachments/assets/8c05ac8d-18a0-47cb-9e7a-82bf9334c6dc" />  
+<img width="1140" height="275" alt="image" src="https://github.com/user-attachments/assets/6d3a04af-c5e0-4dc6-91ad-05ea42ac38b2" />
+<img width="1140" height="275" alt="image" src="https://github.com/user-attachments/assets/d111576d-5173-4a56-b5f2-4ec20d877728" />
+<img width="1135" height="275" alt="image" src="https://github.com/user-attachments/assets/84b5215b-7fb5-4338-ae41-c26edf6fd096" />
 <br>
 
 - The states with the highest current demand for Medicare advantage according to my ratio are **Illinois, Ohio, Michigan, Indiana and Missouri**. Illinois has a high ranking whether or not Cook County is factored in.
