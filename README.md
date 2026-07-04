@@ -143,17 +143,9 @@ The first question is the more challenging of the two, but the data does provide
 
 Every single Midwest state has this trend, the difference is when it started. In Wisconsin, Ohio, Michigan, Minnesota and Missouri (And the Dakotas, not depicted here) the trend began earlier, around 2020. In Illinois, Indiana, Iowa, Kansas and Nebraska, the trend began more recently. The more recent the trend, the greater the possible market gap. **The bottom 5 states here should be given special attention.**
 
-That would make for an easy ratio, but there's just one other problem: Population. Even if a location has high demand, focusing the campaign on low-population areas could result in less return overall. In order to properly gauge demand, we must take into account the following:
+Because of this trend, I can make an inference to gauge demand:
 
-- Areas with a high population of beneficiaries with BOTH A and B.
-- Areas with a high population of beneficiaries without Part C or other additional coverage.
-- Areas with a high Medicare beneficiary population overall.
-
-This is the sweet spot, and after untangling the CMS data, I found the correct pieces to make the following ratio:
-
-```SQL
-(A_B_TOT_BENES) * (1 - SUM(A_B_MA_AND_OTH_BENES) / TOT_BENES)
-```
+- **Beneficiaries with only Part A and Part B have an implied demand for Medicare Advantage.**
 
 The second question regarding demographics is much simpler. The data has the age sex, ethnicty and Medicaid status of Medicare beneficiaries in neat columns. Since the columns contain the total number of beneficiaries per demographic, I can't calculate an implied demand, but I can find a distribution, which should be enough until additional data is acquired during the rollout.
 ___
