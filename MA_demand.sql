@@ -11,8 +11,7 @@ CREATE VIEW v_state_MA_demand AS
 SELECT
     g.BENE_STATE_DESC,
     m.YEAR,
-    SUM(m.TOT_BENES) as tot_benes,
-    SUM(m.A_B_TOT_BENES) * (1 - SUM(m.A_B_MA_AND_OTH_BENES) / SUM(m.TOT_BENES)) AS MA_demand_benes
+    SUM(m.A_B_ORGNL_MDCR_BENES) AS MA_demand_benes
 FROM medicare_info AS m
 JOIN geography AS g
     ON m.BENE_FIPS_CD = g.BENE_FIPS_CD
@@ -22,7 +21,6 @@ GROUP BY
     
 SELECT
 	BENE_STATE_DESC,
-    TOT_BENES,
 	ROUND(MA_demand_benes, 2) AS MA_demand_benes
  FROM v_state_MA_demand
  ORDER BY 
@@ -37,8 +35,7 @@ SELECT
     g.BENE_STATE_DESC,
     g.BENE_COUNTY_DESC,
     m.BENE_FIPS_CD,
-    SUM(m.TOT_BENES) AS tot_benes,
-    SUM(m.A_B_TOT_BENES) * (1 - SUM(m.A_B_MA_AND_OTH_BENES) / SUM(m.TOT_BENES)) AS demand_benes
+    SUM(m.A_B_ORGNL_MDCR_BENES) AS demand_benes
 FROM medicare_info AS m
 JOIN geography AS g
     ON m.BENE_FIPS_CD = g.BENE_FIPS_CD

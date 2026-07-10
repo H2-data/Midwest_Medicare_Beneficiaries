@@ -22,6 +22,7 @@ SELECT
 	BENE_STATE_DESC,
     ROUND(growth_pct, 1) as growth_percent
 FROM v_MA_bene_growth
+WHERE BENE_STATE_DESC = 'North Dakota'
 ORDER BY growth_percent DESC;
 
 

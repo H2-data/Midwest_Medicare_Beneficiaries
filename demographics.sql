@@ -1,3 +1,5 @@
+-- Active: 1780043201174@@127.0.0.1@3306@beneficiaries
+-- Active: 1780043201174@@127.0.0.1@3306@medidrugs
 
 -- Here, I'll get percentage distributions for ethnicity, gender and dual status.
 
@@ -5,10 +7,10 @@
 
 DROP VIEW v_bene_eth_dist;
 
-CREATE VIEW v_bene_eth_dist AS
+CREATE VIEW v_bene_eth_dist AS -- Implement and test query results with coalesce, and do beneficairy col math.
 SELECT
 	g.BENE_STATE_DESC,
-    SUM(d.WHITE_TOT_BENES) / SUM(m.TOT_BENES) * 100 AS white_demo_pct, 
+    SUM(COALESCE(d.WHITE_TOT_BENES), 0) / SUM(COALESCE(m.TOT_BENES) * 100 AS white_demo_pct, 
     SUM(d.BLACK_TOT_BENES) / SUM(m.TOT_BENES) * 100 AS black_demo_pct, 
     SUM(d.NATIND_TOT_BENES) / SUM(m.TOT_BENES) * 100 AS natind_demo_pct, 
     SUM(d.API_TOT_BENES) / SUM(m.TOT_BENES) * 100 AS api_demo_pct, 
@@ -29,7 +31,29 @@ SELECT
     ROUND(api_demo_pct, 1) AS Asian_PI, 
     ROUND(hsp_demo_pct, 1) AS Hispanic, 
     ROUND(oth_demo_pct, 1) AS Other
-FROM v_bene_eth_dist;
+FROM v_bene_eth_dist
+WHERE BENE_STATE_DESC = 'Illinois';
+
+SELECT
+    g.BENE_STATE_DESC,
+    SUM(m.TOT_BENES),
+    SUM(d.WHITE_TOT_BENES),
+    SUM(d.BLACK_TOT_BENES),
+    SUM(d.NATIND_TOT_BENES), 
+    SUM(d.API_TOT_BENES), 
+    SUM(d.HSPNC_TOT_BENES), 
+    SUM(d.OTHR_TOT_BENES)
+FROM medicare_info AS m
+JOIN demographics AS d
+    ON m.BENE_FIPS_CD = d.BENE_FIPS_CD
+JOIN geography AS g
+    ON m.BENE_FIPS_CD = g.BENE_FIPS_CD
+WHERE m.YEAR = 2024 AND
+g.BENE_STATE_DESC = 'Michigan'
+GROUP BY BENE_STATE_DESC;
+
+SELECT * FROM demographics;
+
 
 -- Next, I'll repeat the process for gender. It's the same code, juse different columns:
 
