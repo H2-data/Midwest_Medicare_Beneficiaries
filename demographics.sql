@@ -10,18 +10,18 @@ DROP VIEW v_bene_eth_dist;
 CREATE VIEW v_bene_eth_dist AS -- Implement and test query results with coalesce, and do beneficairy col math.
 SELECT
 	g.BENE_STATE_DESC,
-    SUM(COALESCE(d.WHITE_TOT_BENES), 0) / SUM(COALESCE(m.TOT_BENES) * 100 AS white_demo_pct, 
-    SUM(d.BLACK_TOT_BENES) / SUM(m.TOT_BENES) * 100 AS black_demo_pct, 
-    SUM(d.NATIND_TOT_BENES) / SUM(m.TOT_BENES) * 100 AS natind_demo_pct, 
-    SUM(d.API_TOT_BENES) / SUM(m.TOT_BENES) * 100 AS api_demo_pct, 
-    SUM(d.HSPNC_TOT_BENES) / SUM(m.TOT_BENES) * 100 AS hsp_demo_pct, 
-    SUM(d.OTHR_TOT_BENES) / SUM(m.TOT_BENES) * 100 AS oth_demo_pct,
+    m.YEAR,
+    SUM(COALESCE(d.WHITE_TOT_BENES, 0)) / SUM(COALESCE(m.TOT_BENES, 0)) * 100 AS white_demo_pct, 
+    SUM(COALESCE(d.BLACK_TOT_BENES, 0)) / SUM(COALESCE(m.TOT_BENES, 0)) * 100 AS black_demo_pct, 
+    SUM(COALESCE(d.NATIND_TOT_BENES, 0)) / SUM(COALESCE(m.TOT_BENES, 0)) * 100 AS natind_demo_pct, 
+    SUM(COALESCE(d.API_TOT_BENES, 0)) / SUM(COALESCE(m.TOT_BENES, 0)) * 100 AS api_demo_pct, 
+    SUM(COALESCE(d.HSPNC_TOT_BENES, 0)) / SUM(COALESCE(m.TOT_BENES, 0)) * 100 AS hsp_demo_pct, 
+    SUM(COALESCE(d.OTHR_TOT_BENES, 0)) / SUM(COALESCE(m.TOT_BENES, 0)) * 100 AS oth_demo_pct,
 	ROW_NUMBER() OVER (PARTITION BY g.BENE_STATE_DESC)
 FROM demographics AS d
-    JOIN geography AS g ON d.BENE_FIPS_CD = g.BENE_FIPS_CD
-    JOIN medicare_info AS m ON g.BENE_FIPS_CD = m.BENE_FIPS_CD
-WHERE m.YEAR = 2024
-GROUP BY BENE_STATE_DESC;
+    JOIN geography AS g ON d.index = g.index
+    JOIN medicare_info AS m ON g.index = m.index
+GROUP BY g.BENE_STATE_DESC, m.YEAR;
 
 SELECT 
 	BENE_STATE_DESC,
@@ -32,24 +32,25 @@ SELECT
     ROUND(hsp_demo_pct, 1) AS Hispanic, 
     ROUND(oth_demo_pct, 1) AS Other
 FROM v_bene_eth_dist
-WHERE BENE_STATE_DESC = 'Illinois';
+WHERE BENE_STATE_DESC = 'Wisconsin' AND
+YEAR = '2024';
 
 SELECT
     g.BENE_STATE_DESC,
-    SUM(m.TOT_BENES),
-    SUM(d.WHITE_TOT_BENES),
-    SUM(d.BLACK_TOT_BENES),
-    SUM(d.NATIND_TOT_BENES), 
-    SUM(d.API_TOT_BENES), 
-    SUM(d.HSPNC_TOT_BENES), 
-    SUM(d.OTHR_TOT_BENES)
+    SUM(COALESCE(m.TOT_BENES, 0)) AS total_benes,
+    SUM(COALESCE(d.WHITE_TOT_BENES
+    + d.BLACK_TOT_BENES 
+    + d.NATIND_TOT_BENES 
+    + d.API_TOT_BENES 
+    + d.HSPNC_TOT_BENES 
+    + d.OTHR_TOT_BENES, 0)) AS total_eths
 FROM medicare_info AS m
 JOIN demographics AS d
-    ON m.BENE_FIPS_CD = d.BENE_FIPS_CD
+    ON m.index = d.index
 JOIN geography AS g
-    ON m.BENE_FIPS_CD = g.BENE_FIPS_CD
+    ON m.index = g.index
 WHERE m.YEAR = 2024 AND
-g.BENE_STATE_DESC = 'Michigan'
+g.BENE_STATE_DESC = 'Wisconsin'
 GROUP BY BENE_STATE_DESC;
 
 SELECT * FROM demographics;
@@ -75,7 +76,8 @@ SELECT
 	BENE_STATE_DESC,
     ROUND(male_bene_pct, 1) AS Male, 
     ROUND(female_bene_pct, 1) AS Female
-FROM v_bene_gender_dist;
+FROM v_bene_gender_dist
+WHERE BENE_STATE_DESC = 'Minnesota';
 
 -- Lastly, I'll take dual coverage distributions.
 
