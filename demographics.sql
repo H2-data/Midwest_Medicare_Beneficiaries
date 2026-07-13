@@ -7,7 +7,7 @@
 
 DROP VIEW v_bene_eth_dist;
 
-CREATE VIEW v_bene_eth_dist AS -- Implement and test query results with coalesce, and do beneficairy col math.
+CREATE VIEW v_bene_eth_dist AS -- Maybe instead of Coalesce add a new column that just says "No Data"
 SELECT
 	g.BENE_STATE_DESC,
     m.YEAR,
@@ -32,7 +32,7 @@ SELECT
     ROUND(hsp_demo_pct, 1) AS Hispanic, 
     ROUND(oth_demo_pct, 1) AS Other
 FROM v_bene_eth_dist
-WHERE BENE_STATE_DESC = 'Wisconsin' AND
+WHERE BENE_STATE_DESC = 'South Dakota' AND
 YEAR = '2024';
 
 SELECT
@@ -63,21 +63,22 @@ DROP VIEW v_bene_gender_dist;
 CREATE VIEW v_bene_gender_dist AS
 SELECT
 	g.BENE_STATE_DESC,
-    SUM(d.MALE_TOT_BENES) / SUM(m.TOT_BENES) * 100 AS male_bene_pct, 
-    SUM(d.FEMALE_TOT_BENES) / SUM(m.TOT_BENES) * 100 AS female_bene_pct,
+    m.YEAR,
+    SUM(COALESCE(d.MALE_TOT_BENES, 0)) / SUM(COALESCE(m.TOT_BENES, 0)) * 100 AS male_bene_pct, 
+    SUM(COALESCE(d.FEMALE_TOT_BENES, 0)) / SUM(COALESCE(m.TOT_BENES, 0)) * 100 AS female_bene_pct,
 	ROW_NUMBER() OVER (PARTITION BY g.BENE_STATE_DESC)
 FROM demographics AS d
-    JOIN geography AS g ON d.BENE_FIPS_CD = g.BENE_FIPS_CD
-    JOIN medicare_info AS m ON g.BENE_FIPS_CD = m.BENE_FIPS_CD
-WHERE m.YEAR = 2024
-GROUP BY BENE_STATE_DESC;
+    JOIN geography AS g ON d.index = g.index
+    JOIN medicare_info AS m ON g.index = m.index
+GROUP BY BENE_STATE_DESC, YEAR;
 
 SELECT 
 	BENE_STATE_DESC,
     ROUND(male_bene_pct, 1) AS Male, 
     ROUND(female_bene_pct, 1) AS Female
 FROM v_bene_gender_dist
-WHERE BENE_STATE_DESC = 'Minnesota';
+WHERE YEAR = '2024' AND
+BENE_STATE_DESC = 'Michigan';
 
 -- Lastly, I'll take dual coverage distributions.
 
@@ -86,17 +87,19 @@ DROP VIEW v_dual_benes_dist;
 CREATE VIEW v_dual_benes_dist AS
 SELECT
 	g.BENE_STATE_DESC,
-    SUM(d.DUAL_TOT_BENES) / SUM(m.TOT_BENES) * 100 AS dual_pct, 
-    SUM(d.NODUAL_TOT_BENES) / SUM(m.TOT_BENES) * 100 AS nodual_pct,
+    m.YEAR,
+    SUM(COALESCE(d.DUAL_TOT_BENES, 0)) / SUM(COALESCE(m.TOT_BENES, 0)) * 100 AS dual_pct, 
+    SUM(COALESCE(d.NODUAL_TOT_BENES, 0)) / SUM(COALESCE(m.TOT_BENES, 0)) * 100 AS nodual_pct,
 	ROW_NUMBER() OVER (PARTITION BY g.BENE_STATE_DESC)
 FROM dual_info AS d
-    JOIN geography AS g ON d.BENE_FIPS_CD = g.BENE_FIPS_CD
-    JOIN medicare_info AS m ON g.BENE_FIPS_CD = m.BENE_FIPS_CD
-WHERE m.YEAR = 2024
-GROUP BY BENE_STATE_DESC;
+    JOIN geography AS g ON d.index = g.index
+    JOIN medicare_info AS m ON g.index = m.index
+GROUP BY BENE_STATE_DESC, YEAR;
 
 SELECT 
 	BENE_STATE_DESC,
     ROUND(dual_pct, 1) AS Dual_Coverage,
     ROUND(nodual_pct, 1) AS No_Dual_Coverage
-FROM v_dual_benes_dist;
+FROM v_dual_benes_dist
+WHERE YEAR = '2024'
+AND BENE_STATE_DESC = 'Illinois';
