@@ -5,6 +5,8 @@
 
 DROP VIEW v_MA_bene_growth;
 
+-- I want to implement COALESCE into my CASE statement here. 0 just means no growth data.
+
 CREATE VIEW v_MA_bene_growth AS
 SELECT
 	g.BENE_STATE_DESC,
@@ -15,7 +17,7 @@ SELECT
     ROW_NUMBER() OVER (PARTITION BY BENE_STATE_DESC)
  FROM geography AS g
  JOIN medicare_info AS m
-	ON g.BENE_FIPS_CD = m.BENE_FIPS_CD
+	ON g.index = m.index
  GROUP BY BENE_STATE_DESC;
  
  SELECT

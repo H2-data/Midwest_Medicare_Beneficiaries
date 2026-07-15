@@ -7,7 +7,9 @@
 
 DROP VIEW v_bene_eth_dist;
 
-CREATE VIEW v_bene_eth_dist AS -- Maybe instead of Coalesce add a new column that just says "No Data"
+-- Is this correct use of Coalesce? Because it did correct the math.
+
+CREATE VIEW v_bene_eth_dist AS
 SELECT
 	g.BENE_STATE_DESC,
     m.YEAR,
