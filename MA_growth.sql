@@ -20,12 +20,29 @@ SELECT
 	ON g.index = m.index
  GROUP BY BENE_STATE_DESC;
  
+ -- Sanity Check
+
  SELECT
 	BENE_STATE_DESC,
     ROUND(growth_pct, 1) as growth_percent
 FROM v_MA_bene_growth
 WHERE BENE_STATE_DESC = 'North Dakota'
 ORDER BY growth_percent DESC;
+
+-- North Dakota's Growth Percent is 89.6
+
+SELECT
+	g.BENE_STATE_DESC,
+	SUM(CASE WHEN m.YEAR = 2020 THEN m.A_B_MA_AND_OTH_BENES END) AS val_2020,
+	SUM(CASE WHEN m.YEAR = 2024 THEN m.A_B_MA_AND_OTH_BENES END) AS val_2024
+ FROM geography AS g
+ JOIN medicare_info AS m
+	ON g.index = m.index
+ GROUP BY BENE_STATE_DESC
+ HAVING BENE_STATE_DESC = 'North Dakota';
+
+-- The 2020 value is 320540. The 2024 value is 607669.
+-- When these numbers are manually calculated, the total is 89.6, which matches the previous query.
 
 
 -- From this, the fastest growing states for MA acquistion are North Dakota, Nebraska, South Dakota, Kansas and Iowa.
