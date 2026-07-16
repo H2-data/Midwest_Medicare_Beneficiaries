@@ -105,3 +105,6 @@ SELECT
 FROM v_dual_benes_dist
 WHERE YEAR = '2024'
 AND BENE_STATE_DESC = 'Illinois';
+
+-- To sanity check each one, I added up all the numbers in the output. 
+-- Each time, they ended up between 99.8-100 to account for rounding.
