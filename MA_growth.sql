@@ -6,18 +6,18 @@
 DROP VIEW v_MA_bene_growth;
 
 -- I want to implement COALESCE into my CASE statement here. 0 just means no growth data.
-
+-- Maybe turn this into a CTE and then specify coalese with math. Maybe. This is too goddamn heavy, fix it.
 CREATE VIEW v_MA_bene_growth AS
 SELECT
 	g.BENE_STATE_DESC,
-	SUM(CASE WHEN m.YEAR = 2020 THEN m.A_B_MA_AND_OTH_BENES END) AS val_2020,
-	SUM(CASE WHEN m.YEAR = 2024 THEN m.A_B_MA_AND_OTH_BENES END) AS val_2024,
-	(SUM(CASE WHEN m.YEAR = 2024 THEN m.A_B_MA_AND_OTH_BENES END) - SUM(CASE WHEN m.YEAR = 2020 THEN m.A_B_MA_AND_OTH_BENES END))
-	/ SUM(CASE WHEN m.YEAR = 2020 THEN m.A_B_MA_AND_OTH_BENES END) * 100 AS growth_pct, 
+	SUM(CASE WHEN m.YEAR = 2020 THEN COALESCE(m.A_B_MA_AND_OTH_BENES, 0) END) AS val_2020,
+	SUM(CASE WHEN m.YEAR = 2024 THEN COALESCE(m.A_B_MA_AND_OTH_BENES, 0) END) AS val_2024,
+	(SUM(CASE WHEN m.YEAR = 2024 THEN COALESCE(m.A_B_MA_AND_OTH_BENES, 0) END) - SUM(CASE WHEN m.YEAR = 2020 THEN COALESCE(m.A_B_MA_AND_OTH_BENES, 0) END))
+	/ SUM(CASE WHEN m.YEAR = 2020 THEN COALESCE(m.A_B_MA_AND_OTH_BENES, 0) END) * 100 AS growth_pct, 
     ROW_NUMBER() OVER (PARTITION BY BENE_STATE_DESC)
  FROM geography AS g
  JOIN medicare_info AS m
-	ON g.index = m.index
+	ON g.index = m.index -- Rename this with table key + id (eg GeographyID, MedinfoID)
  GROUP BY BENE_STATE_DESC;
  
  -- Sanity Check
@@ -38,8 +38,7 @@ SELECT
  FROM geography AS g
  JOIN medicare_info AS m
 	ON g.index = m.index
- GROUP BY BENE_STATE_DESC
- HAVING BENE_STATE_DESC = 'North Dakota';
+WHERE g.BENE_STATE_DESC = 'North Dakota';
 
 -- The 2020 value is 320540. The 2024 value is 607669.
 -- When these numbers are manually calculated, the total is 89.6, which matches the previous query.

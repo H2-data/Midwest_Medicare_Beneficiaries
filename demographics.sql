@@ -7,8 +7,6 @@
 
 DROP VIEW v_bene_eth_dist;
 
--- Is this correct use of Coalesce? Because it did correct the math.
-
 CREATE VIEW v_bene_eth_dist AS
 SELECT
 	g.BENE_STATE_DESC,

@@ -5,11 +5,7 @@
 
 -- First, I will order the states by MA demand.
 
--- SINCE IM USING ONE INFERENCE COLUMN, DO I EVEN NEED THIS DOCUMENT?????
-
 DROP VIEW v_state_MA_demand;
-
--- HERE WE DO HAVE NULLS, HOWEVER there is no math being done, just querying. Best to leave them be?
 
 CREATE VIEW v_state_MA_demand AS
 SELECT
@@ -69,11 +65,12 @@ GROUP BY
     YEAR;
 
 SELECT
+    BENE_COUNTY_DESC,
     YEAR,
     SUM(demand_benes) 
 FROM v_county_MA_demand
 WHERE YEAR = 2020
-AND BENE_STATE_DESC = 'Wisconsin';
+AND BENE_COUNTY_DESC = 'Adams County';
 
 -- Quick sanity check
 
