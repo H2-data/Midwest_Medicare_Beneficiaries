@@ -1,94 +1,46 @@
 
 -- Here, I will use the opportunity equation (see README) in order to find:
--- -- The state ranking for highest MA demand.
--- -- The county rankings for MA demand and population per state.
+-- The state ranking for highest MA demand.
+-- The county rankings for MA demand and population per state.
 
 -- First, I will order the states by MA demand.
 
-DROP VIEW v_state_MA_demand;
+DROP VIEW v_monthly_county_avg_medicare;
 
-CREATE VIEW v_state_MA_demand AS
+CREATE VIEW v_monthly_county_avg_medicare AS
 SELECT
-    g.BENE_STATE_DESC,
-    m.YEAR,
-    SUM(m.A_B_ORGNL_MDCR_BENES) AS MA_demand_benes
-FROM medicare_info AS m
-JOIN geography AS g
-    ON m.index = g.index
-GROUP BY
-	BENE_STATE_DESC, 
-    YEAR;
-    
-SELECT
-	BENE_STATE_DESC,
+    BENE_COUNTY_DESC,
+    BENE_STATE_DESC,
     YEAR,
-	ROUND(MA_demand_benes, 2) AS MA_demand_benes
- FROM v_state_MA_demand
- WHERE YEAR IN (2023, 2024)
- ORDER BY 
-    MA_demand_benes DESC;
-
--- Quick sanity check
-
-SELECT
-    SUM(A_B_ORGNL_MDCR_BENES)
+    AVG(A_B_ORGNL_MDCR_BENES) AS ab_only
 FROM medicare_info
-WHERE BENE_STATE_DESC = 'Wisconsin'
-AND YEAR = '2020';
-
--- The result was 6817737
+GROUP BY YEAR, BENE_COUNTY_DESC, BENE_STATE_DESC;
 
 SELECT
-    SUM(demand_benes)
-FROM v_county_ma_demand
-WHERE BENE_STATE_DESC = 'Wisconsin'
-AND YEAR = '2020';
+    BENE_STATE_DESC,
+    SUM(ab_only) AS AB_Only_Benes
+FROM v_monthly_county_avg_medicare
+WHERE YEAR = 2024
+GROUP BY BENE_STATE_DESC
+ORDER BY AB_Only_Benes DESC;
 
--- The result was 6817737, matching the original table.
-
+-- The code structure used in this query is the same as the demographics. See demographics.sql for proof of sanity check.
 -- Next, I'll check the county rankings to see which counties have a high demand per state.
+-- I'll collect the top 5 ranked per state for this one.
 
-DROP VIEW v_county_MA_demand;
-
-CREATE VIEW v_county_MA_demand AS
+WITH rankings AS (
 SELECT
-    g.BENE_STATE_DESC,
-    g.BENE_COUNTY_DESC,
-    m.YEAR,
-    SUM(m.A_B_ORGNL_MDCR_BENES) AS demand_benes
-FROM medicare_info AS m
-JOIN geography AS g
-    ON m.index = g.index
-GROUP BY
     BENE_STATE_DESC,
     BENE_COUNTY_DESC,
-    YEAR;
-
+    SUM(ab_only) AS AB_Only_Benes,
+    RANK() OVER(PARTITION BY BENE_STATE_DESC ORDER BY SUM(ab_only) DESC) AS rankings
+FROM v_monthly_county_avg_medicare
+WHERE YEAR = 2024
+GROUP BY BENE_STATE_DESC, BENE_COUNTY_DESC
+)
 SELECT
-    BENE_COUNTY_DESC,
-    YEAR,
-    SUM(demand_benes) 
-FROM v_county_MA_demand
-WHERE YEAR = 2020
-AND BENE_COUNTY_DESC = 'Adams County';
+    *
+FROM rankings
+WHERE rankings <= 5;
 
--- Quick sanity check
-
-SELECT
-    SUM(A_B_ORGNL_MDCR_BENES)
-FROM medicare_info
-WHERE BENE_COUNTY_DESC = 'Dupage County'
-AND YEAR = '2020';
-
--- The result was 1167768
-
-SELECT
-    SUM(demand_benes)
-FROM v_county_ma_demand
-WHERE BENE_COUNTY_DESC = 'Dupage County'
-AND YEAR = '2020';
-
--- The result was 1167768, matching the original table.
-
- 
 
