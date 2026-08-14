@@ -16,7 +16,7 @@ The data for this project was obtained from the following sources:
 
 [Data Source](https://data.cms.gov/resources/medicare-monthly-enrollment-data-dictionary)
 
-[Dataset]
+[Dataset](https://github.com/H2-data/Midwest_Medicare_Beneficiaries/blob/undo_merge/beneficiaries_data.zip)
 
 ### **How to Read and Run This Repository:**
 
@@ -68,13 +68,11 @@ Traditionally, Medicare Advantage policy accessibility is based on location, so 
 
 <img width="1285" height="718" alt="image" src="https://github.com/user-attachments/assets/96df4494-8c0c-4f48-a350-4f733fc382b9" />
 <br>
-
-To interact with the dashboard or see individual state and year distributions, see the Power BI section of the project, linked HERE:
 ___
 
 ## **Data Preprocessing:**
 
-Aside from generic data preprocessing (outlier management, missing values and duplicates) there was a major challenge in preparing the data... The data itself. There are dozens of different types of Medicare beneficiaries, and because CMS likes to be thorough, some columns are calculations of other columns, which can greatly damage the intergity of the analysis. This problem was so prevalant, I created an entire seperate section dedicated to untangling the mess, linked HERE:
+Aside from generic data preprocessing (outlier management, missing values and duplicates) there was a major challenge in preparing the data... The data itself. There are dozens of different types of Medicare beneficiaries, and because CMS likes to be thorough, some columns are calculations of other columns, which can greatly damage the intergity of the analysis. This problem was so prevalant, I created an entire seperate section dedicated to untangling the mess, linked [HERE](https://github.com/H2-data/Midwest_Medicare_Beneficiaries/blob/undo_merge/The%20CMS%20Mess.md)
 
 For this summative README, I will provide one example. When I went through some of the lookup columns to find possible calculated columns, I stumbled across a data entry labled 'Year' in the 'Month' column. I suspected it might be a yearly calculation of the number of Medicare beneficiaries per a geographic level, so I tested it by filtering the data into state and then county. The county filtration provided my answer:
 
@@ -126,7 +124,7 @@ test2[['YEAR', 'MONTH','BENE_STATE_ABRVTN', 'BENE_COUNTY_DESC', 'TOT_BENES']].se
 
 Just to be extra super sure, I used .describe for the column TOT_BENES using my filtration constraints, and it turns out it was a yearly MEAN calculation, not a full sum. Still, a calculation is a calculation, so I took it out to preserve the integrity of the analysis.
 
-To see the other tests I ran as well as the rest of the preprocessing, please refer to the Python preprocessing portion of this project, linked HERE:
+To see the other tests I ran as well as the rest of the preprocessing, please refer to the Python preprocessing portion of this project, linked [HERE](https://github.com/H2-data/Midwest_Medicare_Beneficiaries/blob/undo_merge/midwest_benes_cleaning.ipynb):
 ___
 
 ## **How can I solve the problem?**
@@ -174,7 +172,7 @@ Let's go through and answer each data question using visuals and tables from the
 
 ### **Which counties have the highest demand for Medicare Advantage?**
 
-This README is designed to be summative, so I will provide the top 5 counties for the top 3 states, but all county rankings by state can be found on the interactive dashboard and in the SQL 'demographics' file, linked HERE.
+This README is designed to be summative, so I will provide the top 5 counties for the top 3 states, but all county rankings by state can be found on the interactive dashboard and in the SQL 'demographics' file, linked [HERE](https://github.com/H2-data/Midwest_Medicare_Beneficiaries/blob/undo_merge/demographics.sql).
 
 <img width="1140" height="275" alt="image" src="https://github.com/user-attachments/assets/6d3a04af-c5e0-4dc6-91ad-05ea42ac38b2" />
 <img width="1140" height="275" alt="image" src="https://github.com/user-attachments/assets/d111576d-5173-4a56-b5f2-4ec20d877728" />
@@ -183,12 +181,11 @@ This README is designed to be summative, so I will provide the top 5 counties fo
 
 - The states with the highest current demand for Medicare advantage according to my ratio are **Illinois, Ohio, Michigan, Indiana and Missouri**. Illinois has a high ranking whether or not Cook County is factored in.
 
-- The see the County MA Demand Ranking for all states, please refer to the SQL report linked HERE. I'd recommend prioritizing the following:
+- The see the County MA Demand Ranking for all states, please refer to the SQL report linked [HERE](https://github.com/H2-data/Midwest_Medicare_Beneficiaries/blob/undo_merge/MA_demand.sql) for the ranking and [HERE](https://github.com/H2-data/Midwest_Medicare_Beneficiaries/blob/undo_merge/MA_demand.sql) for growth. I'd recommend prioritizing the following:
 
-	- The top 5 counties for the top 5 results. MAKE SURE TO INCLUDE COOK COUNTY FOR ILLINOIS, I have removed it from visuals to avoid visal skew but it's population alone makes it top priority.
+	- The top 5 counties for the top 5 results. MAKE SURE TO INCLUDE COOK COUNTY FOR ILLINOIS, I have removed it from visuals to avoid visual skew but it's population alone makes it top priority.
 	- The top 5 counties for Kansas, Nebraska and Iowa on account of their market opening.
-	- The top 5 counties for _________________________ on account of their MA policy growth from 2020-2024.
-	- The TOP PRIORITY STATES are _____________ because they fall into all 3 of the previous categories.
+	- The top 5 counties for North Dakota, Nebraska, South Dakota, Kansas, and Iowa on account of their MA policy growth from 2020-2024.
 
 ### **What are the demographic distributions of the midwest?**
 
@@ -206,4 +203,3 @@ This README is designed to be summative, so I will provide the top 5 counties fo
 - North Dakota and South Dakota have a uniquely high population of Native American beneficiaries as their secondary demographic for marketing purposes.
 - Michigan, Ohio and Missouri have a uniquely high population of black beneficiaries as their secondary demographic for marketing purposes.
 - Most states have a majority of demand beneficiaries centralized in the top 3 counties.
-- For more state by state details regarding demographics, please refer to the dashboard linked HERE and the SQL report linked HERE.
