@@ -20,8 +20,6 @@ The data for this project was obtained from the following sources:
 
 ### **How to Read and Run This Repository:**
 
-- Files are labelled from 01-06. They can be read in numeric order. This README file contains the important points of the analysis, and should be read first.
-
 - To test the code on this project, you will need access to the following resources:
   
   	- Visual Studio Code (Or any other all-inclusive coding environment.)
@@ -40,11 +38,11 @@ The data for this project was obtained from the following sources:
 
 **Step 2.** Once you get to the Database Creation section, you can put the username, password and database name into the SQL alchemy engine object. Then run the code. It should slice the cleaned data into tables and send them to the database.
 
-**Step 3.** Run the SQL code in your SQL environment. You must do this since the code will create VIEW objects necessary for the dashboard to work.
+**Step 3.** Run the SQL code in your SQL environment.
 
 **Step 4.** Open the Power BI pbix file.
 
-**Step 5.** You need to have an ODBC connector since the code is MySQL. Once you've created the connection object, you can connect the database to Power BI using the Power Query. This should activate the dashboard.
+**Step 5.** You need to have an ODBC connector since the code is MySQL. Once you've created the connection object, you can connect the database to Power BI using the Power Query and add all tables when prompted. This should activate the dashboard.
 
 ### **Who is the Project's Intended Recipient?:**
 
