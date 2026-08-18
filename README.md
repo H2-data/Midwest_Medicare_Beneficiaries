@@ -64,7 +64,7 @@ Traditionally, Medicare Advantage policy accessibility is based on location, so 
 
 ### **Data Report:**
 
-<img width="1285" height="718" alt="image" src="https://github.com/user-attachments/assets/96df4494-8c0c-4f48-a350-4f733fc382b9" />
+<img width="1286" height="720" alt="Screenshot 2026-08-17 152614" src="https://github.com/user-attachments/assets/cebc7181-5f46-4f1c-a389-63dd3de44847" />
 <br>
 ___
 
@@ -134,7 +134,7 @@ At it's core, this project can be boiled down to 2 simple questions:
 
 The first question is the more challenging of the two, but the data does provide a solid answer. There are many different types of beneficiaries in the dataset, and each kind of beneficiary has a certain level of implied demand for Medicare Advantage. For example, someone in the MA_AND_OTH_BENES column might have lower demand, because as the column name implies, they already have Part C or other additional coverage. However, people in the A_B_ORGNL_MDCR_BENES column might have higher demand, since they only have Medicare Part A and B. The data clearly shows that people with Part A and Part B with no additional coverage are on the decline, while people with A, B and additional coverage are on the rise as shown here:
 
-<img width="1096" height="272" alt="image" src="https://github.com/user-attachments/assets/a6bbb156-ac63-4df4-a36f-ff1ea15636f3" />
+<img width="1153" height="332" alt="Screenshot 2026-08-17 154452" src="https://github.com/user-attachments/assets/5c6c4dd4-956b-4860-abda-4a62b1670798" />
 <br>
 
 Every single Midwest state has this trend, the difference is when it started. In Wisconsin, Ohio, Michigan, Minnesota and Missouri (And the Dakotas, not depicted here) the trend began earlier, around 2020. In Illinois, Indiana, Iowa, Kansas and Nebraska, the trend began more recently. The more recent the trend, the greater the possible market gap. **The bottom 5 states here should be given special attention.**
@@ -156,7 +156,7 @@ ___
 
 <div align="center">
     
-<img width="832" height="190" alt="image" src="https://github.com/user-attachments/assets/be20411f-4f6b-4f65-aa54-bc9b0006729b" />  
+<img width="1070" height="182" alt="Screenshot 2026-08-17 155638" src="https://github.com/user-attachments/assets/ac886995-1cff-4ff2-a995-516f18067b01" /> 
 </div>
 <br>
   
@@ -164,17 +164,19 @@ Let's go through and answer each data question using visuals and tables from the
 
 ### **Which States have the highest demand for Medicare Advantage?**
 
-<img width="1141" height="335" alt="image" src="https://github.com/user-attachments/assets/58780ea9-3c56-49fd-8d7e-5bd1e742fad7" />
+<img width="968" height="317" alt="Screenshot 2026-08-17 200027" src="https://github.com/user-attachments/assets/0874f3d0-67fd-4e7d-b0b1-a022873d8293" />
 
 <br>  
 
 ### **Which counties have the highest demand for Medicare Advantage?**
 
-This README is designed to be summative, so I will provide the top 5 counties for the top 3 states, but all county rankings by state can be found on the interactive dashboard and in the SQL 'demographics' file, linked [HERE](https://github.com/H2-data/Midwest_Medicare_Beneficiaries/blob/undo_merge/demographics.sql).
+This README is designed to be summative, so I will provide the top 5 counties for the top 5 states, but all county rankings by state can be found on the interactive dashboard and in the SQL 'demographics' file, linked [HERE](https://github.com/H2-data/Midwest_Medicare_Beneficiaries/blob/undo_merge/demographics.sql).
 
-<img width="1140" height="275" alt="image" src="https://github.com/user-attachments/assets/6d3a04af-c5e0-4dc6-91ad-05ea42ac38b2" />
-<img width="1140" height="275" alt="image" src="https://github.com/user-attachments/assets/d111576d-5173-4a56-b5f2-4ec20d877728" />
-<img width="1135" height="275" alt="image" src="https://github.com/user-attachments/assets/84b5215b-7fb5-4338-ae41-c26edf6fd096" />
+<img width="1048" height="216" alt="Screenshot 2026-08-17 200532" src="https://github.com/user-attachments/assets/392c3705-c306-4d96-9902-4eab66bf8a5c" />
+<img width="1050" height="215" alt="Screenshot 2026-08-17 200546" src="https://github.com/user-attachments/assets/110a1166-97e9-4576-82bd-031b4c42004e" />
+<img width="1052" height="217" alt="Screenshot 2026-08-17 200601" src="https://github.com/user-attachments/assets/ba515e5c-059f-4c6a-8c95-6d478198d91d" />
+<img width="1048" height="216" alt="Screenshot 2026-08-17 200618" src="https://github.com/user-attachments/assets/f6bfa071-7d45-4dea-99f4-d7eac1aca35c" />
+<img width="1052" height="213" alt="Screenshot 2026-08-17 200632" src="https://github.com/user-attachments/assets/5d9c87a2-c064-43e2-aa92-4dee6f833a74" />
 <br>
 
 - The states with the highest current demand for Medicare advantage according to my ratio are **Illinois, Ohio, Michigan, Indiana and Missouri**. Illinois has a high ranking whether or not Cook County is factored in.
