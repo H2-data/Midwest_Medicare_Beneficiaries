@@ -66,7 +66,6 @@ Traditionally, Medicare Advantage policy accessibility is based on location, so 
 
 <img width="1286" height="720" alt="Screenshot 2026-08-17 152614" src="https://github.com/user-attachments/assets/cebc7181-5f46-4f1c-a389-63dd3de44847" />
 <br>
-___
 
 ## **Data Preprocessing:**
 
@@ -122,7 +121,7 @@ test2[['YEAR', 'MONTH','BENE_STATE_ABRVTN', 'BENE_COUNTY_DESC', 'TOT_BENES']].se
 
 Just to be extra super sure, I used .describe for the column TOT_BENES using my filtration constraints, and it turns out it was a yearly MEAN calculation, not a full sum. Still, a calculation is a calculation, so I took it out to preserve the integrity of the analysis.
 
-To see the other tests I ran as well as the rest of the preprocessing, please refer to the Python preprocessing portion of this project, linked [HERE](https://github.com/H2-data/Midwest_Medicare_Beneficiaries/blob/undo_merge/midwest_benes_cleaning.ipynb):
+To see the other tests I ran as well as the rest of the preprocessing, please refer to the Python preprocessing portion of this project, linked [HERE](https://github.com/H2-data/Midwest_Medicare_Beneficiaries/blob/undo_merge/midwest_benes_cleaning.ipynb).
 ___
 
 ## **How can I solve the problem?**
