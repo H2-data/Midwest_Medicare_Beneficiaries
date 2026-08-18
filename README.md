@@ -189,7 +189,7 @@ This README is designed to be summative, so I will provide the top 5 counties fo
 
 ### **What are the demographic distributions of the midwest?**
 
-<img width="1182" height="310" alt="image" src="https://github.com/user-attachments/assets/0662e1db-4a31-4c54-8f3c-03854f7b9827" />
+<img width="1178" height="311" alt="Screenshot 2026-08-17 202740" src="https://github.com/user-attachments/assets/4368eaee-bd76-4cbf-bea3-46558ca4fc83" />
 <br>
 <br>
 
