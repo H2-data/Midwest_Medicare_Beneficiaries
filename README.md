@@ -185,7 +185,7 @@ This README is designed to be summative, so I will provide the top 5 counties fo
 
 	- The top 5 counties for the top 5 results. MAKE SURE TO INCLUDE COOK COUNTY FOR ILLINOIS, I have removed it from visuals to avoid visual skew but it's population alone makes it top priority.
 	- The top 5 counties for Kansas, Nebraska and Iowa on account of their market opening.
-	- The top 5 counties for North Dakota, Nebraska, South Dakota, Kansas, and Iowa on account of their MA policy growth from 2020-2024.
+	- The top 5 counties for Nebraska, Kansas, and Iowa on account of their MA policy growth from 2020-2024. North Dakota and South Dakota also had a high growth rate, but their beneficiary populations are some of the lowest.
 
 ### **What are the demographic distributions of the midwest?**
 
