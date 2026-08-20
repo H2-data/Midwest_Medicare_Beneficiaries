@@ -67,6 +67,8 @@ Traditionally, Medicare Advantage policy accessibility is based on location, so 
 <img width="1286" height="720" alt="Screenshot 2026-08-17 152614" src="https://github.com/user-attachments/assets/cebc7181-5f46-4f1c-a389-63dd3de44847" />
 <br>
 
+To view and interact with the dashboard, you can find the published version linked [HERE](https://app.powerbi.com/view?r=eyJrIjoiZGJkZWQ5ZWItMmEyMi00MDg0LWExNWItOGRlMDEwOTc4ODdkIiwidCI6ImRmZWM4YzJjLThlNWUtNDI4Yy05MmE4LTkzOTI1ZjM3Y2JlYiJ9).
+
 ## **Data Preprocessing:**
 
 Aside from generic data preprocessing (outlier management, missing values and duplicates) there was a major challenge in preparing the data... The data itself. There are dozens of different types of Medicare beneficiaries, and because CMS likes to be thorough, some columns are calculations of other columns, which can greatly damage the intergity of the analysis. This problem was so prevalant, I created an entire seperate section dedicated to untangling the mess, linked [HERE](https://github.com/H2-data/Midwest_Medicare_Beneficiaries/blob/undo_merge/The%20CMS%20Mess.md)
